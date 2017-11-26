@@ -1,12 +1,14 @@
 # Zeromem::Ws
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zeromem/ws`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is implementation for movitto/rjr websocket Node for JSON-RPC to eliminate  
+performance degradation under heavy load (1000s queries per minute).
 
-TODO: Delete this and the text above, and describe your gem
+Current implementation has memory leak which cause CPU overhead accumulation.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+
 
 ```ruby
 gem 'zeromem-ws'
@@ -21,18 +23,26 @@ Or install it yourself as:
     $ gem install zeromem-ws
 
 ## Usage
+```ruby
+require 'zeromem/ws'
 
-TODO: Write usage instructions here
+server = Zeromem::Ws::WsHeavy.new :host => 'localhost', :port => 9789, :node_id => "server"
+server.dispatcher.handle('method') { |i|
+  puts "server: #{i}"
+  "#{i}".upcase
+}
+server.listen
 
-## Development
+client = Zeromem::Ws::WsHeavy.new :node_id => "client", :timeout => 8000
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+0.upto(50000) { |i| 
+  puts "#{i}" 
+  puts client.invoke "ws://localhost:9789", "method", "Hello World" 
+}
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/zeromem-ws.
+Bug reports and pull requests are welcome on GitHub at https://github.com/zeromem88/ruby-zeromem-ws.
 
 ## License
 
