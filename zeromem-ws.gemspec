@@ -6,12 +6,12 @@ require "zeromem/ws/version"
 Gem::Specification.new do |spec|
   spec.name          = "zeromem-ws"
   spec.version       = Zeromem::Ws::VERSION
-  spec.authors       = ["zeromem"]
+  spec.authors       = ["zeromem88"]
   spec.email         = ["zeromem2@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Extended websocket client based on Movitto/rjr package}
+  spec.description   = %q{Eliminates performance degradation of Movitto/rjr websocket json-rpc client under heavy load}
+  spec.homepage      = "https://github.com/zeromem88/ruby-zeromem-ws"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
