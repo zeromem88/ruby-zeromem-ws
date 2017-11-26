@@ -1,4 +1,5 @@
 require "zeromem/ws/version"
+require 'rjr/core_ext'
 require 'rjr/nodes/ws'
 
 module Zeromem
@@ -26,7 +27,7 @@ module Zeromem
       # @param [String] rpc_method json-rpc method to invoke on destination
       # @param [Array] args array of arguments to convert to json and invoke remote method wtih
       def invoke(uri, rpc_method, *args)
-        message = Messages::Request.new :method => rpc_method,
+        message = RJR::Messages::Request.new :method => rpc_method,
         :args   => args,
         :headers => @message_headers
 
@@ -40,7 +41,7 @@ module Zeromem
 
         # TODO optional timeout for response ?
         # this cause resource leak
-        # result = wait_for_result(message)
+        #result = wait_for_result(message)
 
         result = wait_for_result_custom(message)
 

@@ -16,7 +16,7 @@ GEM
     em-websocket-client (0.1.2)
       eventmachine
       websocket
-    eventmachine (1.2.5-x86-mingw32)
+    eventmachine (1.2.5)
     http_parser.rb (0.6.0)
     json (2.1.0)
     rake (10.5.0)
@@ -39,10 +39,12 @@ GEM
     websocket (1.2.5)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
   bundler (~> 1.16)
+  eventmachine (>= 1.2.5)
   rake (~> 10.0)
   rspec (~> 3.0)
   zeromem-ws!
