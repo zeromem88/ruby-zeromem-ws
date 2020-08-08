@@ -17,9 +17,10 @@ GEM
       eventmachine
       websocket
     eventmachine (1.2.5)
+    eventmachine (1.2.5-x86-mingw32)
     http_parser.rb (0.6.0)
     json (2.1.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rjr (0.19.3)
       eventmachine
       json (>= 1.7.6)
@@ -45,7 +46,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   eventmachine (>= 1.2.5)
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
   zeromem-ws!
 
